@@ -31,6 +31,10 @@ SET DESCRICAO_MOVIMENTACAO ="Compra de suprimentos básicos"
 WHERE CATEGORIA = "mercado" AND VALOR < 100.00;
 
 UPDATE movimentacao_financeira
+SET DESCRICAO_MOVIMENTACAO ="Meu salário mensal" 
+WHERE CATEGORIA = "Salário";
+
+UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Compra de notebook" 
 WHERE ID_MOVIMENTACAO = 6;
 
@@ -40,59 +44,59 @@ WHERE ID_MOVIMENTACAO = 8;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Compra de WorkStation dedicada para engenharia" 
-WHERE ID_MOVIMENTACAO = 11;
+WHERE ID_MOVIMENTACAO = 21;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Compra de farol para o carro" 
-WHERE ID_MOVIMENTACAO = 13;
+WHERE ID_MOVIMENTACAO = 23;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Almoço no shopping" 
-WHERE ID_MOVIMENTACAO = 15;
-
-UPDATE movimentacao_financeira
-SET DESCRICAO_MOVIMENTACAO ="Compra de mesa para escritório" 
-WHERE ID_MOVIMENTACAO = 16;
-
-UPDATE movimentacao_financeira
-SET DESCRICAO_MOVIMENTACAO ="Compra de software" 
-WHERE ID_MOVIMENTACAO = 22;
-
-UPDATE movimentacao_financeira
-SET DESCRICAO_MOVIMENTACAO ="Compra de mesa para escritório" 
-WHERE ID_MOVIMENTACAO = 24;
-
-UPDATE movimentacao_financeira
-SET DESCRICAO_MOVIMENTACAO ="Fone de ouvido novo" 
 WHERE ID_MOVIMENTACAO = 25;
 
 UPDATE movimentacao_financeira
-SET DESCRICAO_MOVIMENTACAO ="Marmitex do tio Chico" 
+SET DESCRICAO_MOVIMENTACAO ="Compra de mesa para escritório" 
 WHERE ID_MOVIMENTACAO = 26;
 
 UPDATE movimentacao_financeira
+SET DESCRICAO_MOVIMENTACAO ="Compra de software" 
+WHERE ID_MOVIMENTACAO = 42;
+
+UPDATE movimentacao_financeira
+SET DESCRICAO_MOVIMENTACAO ="Compra de mesa para escritório" 
+WHERE ID_MOVIMENTACAO = 44;
+
+UPDATE movimentacao_financeira
+SET DESCRICAO_MOVIMENTACAO ="Fone de ouvido novo" 
+WHERE ID_MOVIMENTACAO = 45;
+
+UPDATE movimentacao_financeira
+SET DESCRICAO_MOVIMENTACAO ="Marmitex do tio Chico" 
+WHERE ID_MOVIMENTACAO = 46;
+
+UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="pedido de açaí pelo IFood" 
-WHERE ID_MOVIMENTACAO = 29;
+WHERE ID_MOVIMENTACAO = 49;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Cadeira para escritório" 
-WHERE ID_MOVIMENTACAO = 32;
+WHERE ID_MOVIMENTACAO = 62;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Mensalidade academia" 
-WHERE ID_MOVIMENTACAO = 34;
+WHERE ID_MOVIMENTACAO = 64;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Celular Iphone 11" 
-WHERE ID_MOVIMENTACAO = 35;
+WHERE ID_MOVIMENTACAO = 65;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Almoço em restaurante" 
-WHERE ID_MOVIMENTACAO = 36;
+WHERE ID_MOVIMENTACAO = 66;
 
 UPDATE movimentacao_financeira
 SET DESCRICAO_MOVIMENTACAO ="Almoço em shopping" 
-WHERE ID_MOVIMENTACAO = 39;
+WHERE ID_MOVIMENTACAO = 69;
 
 
 /*Percebemos que precisamos ter mais precisão no valor da movimentação financeira. 
@@ -107,3 +111,6 @@ mas podemos criar categorias como SALARIO que é de RECEITA(ganho).*/
 
 ALTER TABLE movimentacao_financeira ADD COLUMN TIPO ENUM("DESPESA", "RECEITA") DEFAULT "DESPESA";
 
+UPDATE movimentacao_financeira
+SET TIPO ="RECEITA" 
+WHERE CATEGORIA = "Salário";

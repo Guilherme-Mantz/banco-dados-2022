@@ -8,7 +8,7 @@ SELECT cliente.NOME_COMPLETO, movimentacao_financeira.VALOR, movimentacao_financ
 FROM conta_corrente
 INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
 INNER JOIN movimentacao_financeira ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE 
-WHERE cliente.ID_CLIENTE = 2 AND MONTH(movimentacao_financeira.DATA) = 01;
+WHERE cliente.ID_CLIENTE = 2 AND movimentacao_financeira.TIPO = "DESPESA" AND MONTH(movimentacao_financeira.DATA) = 01;
 
 /*==== 2 MOVIMENTAÇÕES DE UM DETERMINADO BANCO ====*/
 SELECT cliente.NOME_COMPLETO,conta_corrente.CODIGO_BANCO, movimentacao_financeira.VALOR, movimentacao_financeira.DATA, movimentacao_financeira.CATEGORIA, movimentacao_financeira.DESCRICAO_MOVIMENTACAO
@@ -22,7 +22,7 @@ SELECT cliente.NOME_COMPLETO, movimentacao_financeira.CATEGORIA, movimentacao_fi
 FROM conta_corrente
 INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
 INNER JOIN movimentacao_financeira ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE 
-WHERE cliente.ID_CLIENTE = 2 AND movimentacao_financeira.DESCRICAO_MOVIMENTACAO LIKE "%compra%";
+WHERE cliente.ID_CLIENTE = 2 AND movimentacao_financeira.DESCRICAO_MOVIMENTACAO LIKE "%mensal%";
 
 /*==== 4 MOVIMENTAÇÕES NO PRIMEIRO SEMESTRE DE 2022 ====*/
 SELECT cliente.NOME_COMPLETO, movimentacao_financeira.VALOR, movimentacao_financeira.DATA, movimentacao_financeira.DESCRICAO_MOVIMENTACAO, movimentacao_financeira.TIPO
@@ -33,7 +33,13 @@ WHERE cliente.ID_CLIENTE = 2 AND MONTH(movimentacao_financeira.DATA) BETWEEN 01 
 ORDER BY DATA;
 
 /*==== 5 MOVIMENTAÇÕES NA PRIMEIRA SEMANA DE UM MÊS ====*/
-
+SELECT DISTINCT TRIM(movimentacao_financeira.DESCRICAO_MOVIMENTACAO) AS DESCRICAO
+FROM movimentacao_financeira
+INNER JOIN conta_corrente ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE
+INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
+WHERE WEEK(movimentacao_financeira.DATA) = WEEK(DATE_SUB(movimentacao_financeira.DATA,INTERVAL DAYOFMONTH(movimentacao_financeira.DATA)-1 DAY))
+AND cliente.ID_CLIENTE = 4
+ORDER BY 1;
 
 /*==== 6 SOMA DE TODAS AS DESPESAS ====*/
 SELECT cliente.NOME_COMPLETO, movimentacao_financeira.CATEGORIA,
@@ -45,7 +51,12 @@ WHERE cliente.ID_CLIENTE = 2 AND movimentacao_financeira.TIPO = "DESPESA"
 GROUP BY movimentacao_financeira.CATEGORIA
 HAVING SUM(movimentacao_financeira.VALOR) > 1000;
 
-/*==== 7 BUSCAR 5 RECEITAS ====*/
+/*==== 7 BUSCAR 5  ULTIMAS RECEITAS ====*/
+SELECT cliente.NOME_COMPLETO, movimentacao_financeira.DATA, movimentacao_financeira.DESCRICAO_MOVIMENTACAO, movimentacao_financeira.TIPO
+FROM conta_corrente
+INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
+INNER JOIN movimentacao_financeira ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE 
+WHERE cliente.ID_CLIENTE = 2 AND movimentacao_financeira.TIPO = "RECEITA" ORDER BY DATA DESC LIMIT 5;
 
 /*==== 8 MAIOR MOVIMENTAÇÃO DENTRO DO MÊS ====*/
 SELECT cliente.NOME_COMPLETO,MAX(movimentacao_financeira.VALOR) AS VALOR_MAIOR_MOVIMENTACAO,

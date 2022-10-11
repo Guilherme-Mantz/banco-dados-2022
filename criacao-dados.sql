@@ -33,7 +33,17 @@ VALUES(null, 120.60, "2022-05-15","energia casa", 1),
 (null, 50.00, "2022-06-10","refeição", 2),
 (null, 90.50, "2022-06-15","eletronicos", 2),
 (null, 150.00, "2022-07-05","gasolina", 2),
-(null, 62.68, "2022-08-17","uber", 2);
+(null, 62.68, "2022-08-17","uber", 2),
+(null, 2600.00, "2022-01-7","Salário", 1),
+(null, 2600.00, "2022-02-7","Salário", 1),
+(null, 2600.00, "2022-03-7","Salário", 1),
+(null, 2600.00, "2022-04-7","Salário", 1),
+(null, 2600.00, "2022-05-7","Salário", 1),
+(null, 2600.00, "2022-06-7","Salário", 1),
+(null, 2600.00, "2022-07-7","Salário", 1),
+(null, 2600.00, "2022-08-7","Salário", 1),
+(null, 2600.00, "2022-09-7","Salário", 1),
+(null, 2600.00, "2022-10-7","Salário", 1);
 
 /*MOVIMENTAÇÕES CLIENTE 2*/
 INSERT INTO movimentacao_financeira
@@ -46,7 +56,16 @@ VALUES(null, 15000.00, "2022-01-18","eletronicos", 3),
 (null, 150.00, "2022-04-26","gasolina", 4),
 (null, 356.58, "2022-05-1","mercado", 4),
 (null, 90.00, "2022-06-2","gasolina", 4),
-(null, 70.00, "2022-06-5","mercado", 4);
+(null, 70.00, "2022-06-5","mercado", 4),
+(null, 6500.00, "2022-01-5","Salário", 3),
+(null, 6500.00, "2022-02-5","Salário", 3),
+(null, 6500.00, "2022-03-5","Salário", 3),
+(null, 6500.00, "2022-04-5","Salário", 3),
+(null, 6500.00, "2022-05-5","Salário", 3),
+(null, 6500.00, "2022-06-5","Salário", 3),
+(null, 6500.00, "2022-07-5","Salário", 3),
+(null, 6500.00, "2022-08-5","Salário", 3),
+(null, 6500.00, "2022-09-5","Salário", 3);
 
 /*MOVIMENTAÇÕES CLIENTE 3*/
 INSERT INTO movimentacao_financeira
@@ -59,7 +78,16 @@ VALUES(null, 200.10, "2022-01-10", "energia casa", 5),
 (null, 120.00, "2022-04-26","gasolina", 6),
 (null, 259.63, "2022-05-1","mercado", 6),
 (null, 18.80, "2022-06-2","alimentação", 6),
-(null, 70.00, "2022-06-5","gasolina", 6);
+(null, 70.00, "2022-06-5","gasolina", 6),
+(null, 4200.00, "2022-01-6","Salário", 5),
+(null, 4200.00, "2022-02-6","Salário", 5),
+(null, 4200.00, "2022-03-6","Salário", 5),
+(null, 4200.00, "2022-04-6","Salário", 5),
+(null, 4200.00, "2022-05-6","Salário", 5),
+(null, 4200.00, "2022-06-6","Salário", 5),
+(null, 4200.00, "2022-07-6","Salário", 5),
+(null, 4200.00, "2022-08-6","Salário", 5),
+(null, 4200.00, "2022-09-6","Salário", 5);
 
 
 /*MOVIMENTAÇÕES CLIENTE 4*/
@@ -73,4 +101,14 @@ VALUES(null, 150.00, "2022-01-5", "energia casa", 7),
 (null, 100.00, "2022-04-26","gasolina", 8),
 (null, 350.67, "2022-05-1","mercado", 8),
 (null, 57.90, "2022-06-2","alimentação", 8),
-(null, 80.90, "2022-06-5","gasolina", 8);
+(null, 80.90, "2022-06-5","gasolina", 8),
+(null, 3600.00, "2022-01-7","Salário", 8),
+(null, 3600.00, "2022-02-7","Salário", 8),
+(null, 3600.00, "2022-03-7","Salário", 8),
+(null, 3600.00, "2022-04-7","Salário", 8),
+(null, 3600.00, "2022-05-7","Salário", 8),
+(null, 3600.00, "2022-06-7","Salário", 8),
+(null, 3600.00, "2022-07-7","Salário", 8),
+(null, 3600.00, "2022-08-7","Salário", 8),
+(null, 3600.00, "2022-09-7","Salário", 8),
+(null, 3600.00, "2022-10-7","Salário", 8);
