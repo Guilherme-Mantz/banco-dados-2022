@@ -52,3 +52,23 @@ INNER JOIN movimentacao_financeira ON conta_corrente.ID_CONTA_CORRENTE = movimen
 WHERE CPF = "90547362080";
 
 /*==== 5 VALIDAÇÃO DE MOVIMENTAÇÃO ==== */
+
+insert into movimentacao_financeira (valor, DATA, CATEGORIA, CONTA_CORRENTE, DESCRICAO_MOVIMENTACAO, TIPO) 
+		values (1000, "2022-10-15", "Pagamento cliente", 1, "Pagamento de cliente à vista", "RECEITA");
+
+DELIMITER //
+CREATE TRIGGER tg_bloqueio_seguranca BEFORE INSERT ON movimentacao_financeira FOR EACH ROW BEGIN
+   
+    IF (SELECT COUNT(movimentacao_financeira.VALOR) FROM movimentacao_financeira 
+    INNER JOIN conta_corrente ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE
+    INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
+    WHERE cliente.ID_CLIENTE = ID_CLIENTE) > 10 AND
+    
+		(SELECT MAX(valor) FROM movimentacao_financeira 
+		INNER JOIN conta_corrente ON conta_corrente.ID_CONTA_CORRENTE = movimentacao_financeira.CONTA_CORRENTE
+		INNER JOIN cliente ON cliente.ID_CLIENTE = conta_corrente.CLIENTE
+        WHERE ID_CLIENTE = ID_CLIENTE) < (NEW.VALOR * 3) THEN			
+			signal sqlstate '45000' set message_text = 'OPERAÇAO EXCEDE O LIMITE PERMITIDO';         
+                
+	END IF;
+END//
