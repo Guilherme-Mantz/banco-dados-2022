@@ -54,7 +54,7 @@ WHERE CPF = "90547362080";
 /*==== 5 VALIDAÇÃO DE MOVIMENTAÇÃO ==== */
 
 insert into movimentacao_financeira (valor, DATA, CATEGORIA, CONTA_CORRENTE, DESCRICAO_MOVIMENTACAO, TIPO) 
-		values (1000, "2022-10-15", "Pagamento cliente", 1, "Pagamento de cliente à vista", "RECEITA");
+		values (50000, "2022-10-15", "Pagamento cliente", 1, "Pagamento de cliente à vista", "RECEITA");
 
 DELIMITER //
 CREATE TRIGGER tg_bloqueio_seguranca BEFORE INSERT ON movimentacao_financeira FOR EACH ROW BEGIN
